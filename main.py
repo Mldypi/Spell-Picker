@@ -74,43 +74,23 @@ character_classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer',
 
 name = input("What is your name?\n")
 
-print("Choose from the following classes: " + str(character_classes) + "\n")
+print("\n" + "Choose from the following classes: " + str(character_classes) + "\n")
 
 character_profession = input("What class are you?\n")
 
-level_ask = input("what level are you?\n")
+level_ask = input("\n" + "what level are you?\n")
 
 class Character:
   def __init__ (self, character_name, character_class, character_level, char_spells, spell_slots):
-    self.character_name = []
-    self.character_class = None
-    self.character_level = 1
-    self.char_spells = None
-    self.spell_slots = None
+    self.character_name = character_name
+    self.character_class = character_class
+    self.character_level = character_level
+    self.char_spells = spells[character_class]['lvl_'+str(character_level)]
+    self.spell_slots = spell_slots[character_class]['char_lvl_'+str(character_level)]
   
-  def get_name(self):
-    self.character_name = name
-    return self.character_name
-  
-  def get_class(self):
-    self.character_class = character_profession
-    return self.character_class
+#instantiate the Character class. Doesn't have to be a healer, that's a placeholder name for now
+healer = Character(name, character_profession, level_ask, spells, spell_slots_per_level)
 
-  def init_spell_slots(self):
-    self.spell_slots = spell_slots_per_level[character_profession]
-    return self.spell_slots
-  
-  def set_level(self):
-    self.character_level = int(level_ask)
-    return self.character_level
-
-  def calc_spell_slots(self):
-    while self.character_profession == Cleric:
-      if level_ask == 1:
-        self.spell_slots = spell_slots_per_level['Cleric']['char_lvl_1']
-      elif level_ask == 2:
-        self.spell_slots = spell_slots_per_level['Cleric']['char_lvl_2']
-      break
-      return self.spell_slots
-
-print(Character.character_name)
+print("\n" + healer.character_name)
+print("\n" + "Spells:" + "\n" + str(healer.char_spells))
+print("\n" + "Slots:" + "\n" + str(healer.spell_slots))
