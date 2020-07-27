@@ -1,3 +1,4 @@
+#List of spells. Innermost brackets is a List of spells as a dict object. The inside dict objects are the spell levels, which are themselves dict ovjects to the outermost dict keys, which are DnD Character Classes.
 spells = { 'Cleric': { 
   'lvl_1': ['Create Water', 'Cure Minor Wounds', 'Detect Magic', 'Detect Poison', 'Guidance', 'Inflict Minor Wounds', 'Light', 'Mending', 'Purify Food and Drink', 'Read Magic', 'Resistance', 'Virtue'],
 
@@ -7,7 +8,7 @@ spells = { 'Cleric': {
   }
 }
 
-#Divine revers to Clerics and Druids, who share a spell slot progression. Clerics get a bonus slot for their domain spells.
+#Divine revers to Clerics and Druids, who share a spell slot progression. Clerics get a bonus slot for their domain spells. Innermost Dict is spell slots per level. Second Dict is Character Levels. Outermost Dict key is Character Class.
 spell_slots_per_level = { 'Cleric': {
    'char_lvl_1': {'slot_lvl_0': 3, 'slot_lvl_1': 1},
 
@@ -53,9 +54,10 @@ spell_slots_per_level = { 'Cleric': {
 
 }
 
-#did classes as dict originally, probably just need list
+#did classes as a dict originally, probably just need list.
 #character_classes = {'bard': 'bard', 'cleric': 'cleric','druid': 'druid', 'paladin': 'paladin', 'ranger': 'ranger', 'sorcerer': 'sorcerer', 'wizard': 'wizard'}
 
+#Have to leave these as strings. Can I pull these without the '' in the console?
 character_classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Wizard',]
 
 #format to print the list in the dict
@@ -76,17 +78,20 @@ name = input("What is your name?\n")
 
 print("\n" + "Choose from the following classes: " + str(character_classes) + "\n")
 
+#Character_profession is DnD Character Class - used Profession here to avoid confusion.
 character_profession = input("What class are you?\n")
 
+#Input is read as a Str, will need to convert for operations which need to add to the number.
 level_ask = input("\n" + "what level are you?\n")
 
+#Class for the Character. char_spells and spell_slots. I don't know why I didn't need to use character_profession or level_ask in the class parameters. Will try updating that and see what happens, then when I call the class I'll try just using the parameter names.
 class Character:
   def __init__ (self, character_name, character_class, character_level, char_spells, spell_slots):
     self.character_name = character_name
     self.character_class = character_class
     self.character_level = character_level
     self.char_spells = spells[character_class]['lvl_'+str(character_level)]
-    self.spell_slots = spell_slots[character_class]['char_lvl_'+str(character_level)]
+    self.spell_slots = spell_slots_per_level[character_class]['char_lvl_'+str(character_level)]
   
 #instantiate the Character class. Doesn't have to be a healer, that's a placeholder name for now
 healer = Character(name, character_profession, level_ask, spells, spell_slots_per_level)
