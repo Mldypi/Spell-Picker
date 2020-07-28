@@ -109,11 +109,19 @@ class Character:
     #self.char_spells = spells[character_class][(caster_level)]
     #This is a list comprehension.
     self.char_spells = [ 
-    spell
+    (level, spell)
     for level, this_level_spells_l in spells[character_class].items()
     for spell in this_level_spells_l
     if level <= caster_level
     ]
+    #old comprehension
+    #self.char_spells = [ 
+    #spell
+    #for level, this_level_spells_l in spells[character_class].items()
+    #for spell in this_level_spells_l
+    #if level <= caster_level
+    #]
+       
     self.spell_slots = spell_slots_per_level[character_class]['char_lvl_'+str(character_level)]
   
 #instantiate the Character class. Doesn't have to be a healer, that's a placeholder name for now
