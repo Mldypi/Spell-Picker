@@ -65,12 +65,6 @@ spell_slots_per_level = { 'Cleric': {
 #Have to leave these as strings. Can I pull these without the '' in the console?
 character_classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Wizard',]
 
-#find a better way to do the new line
-#print("\n")
-#print("Level Two:\n")
-#for item in spells['lvl_2']:
-#  print(item)
-
 name = input("What is your name?\n")
 
 print("\n" + "Choose from the following classes: " + str(character_classes) + "\n")
@@ -119,26 +113,25 @@ active_character = Character(name, character_profession, level_ask, caster_level
 
 #prints to test that class is working
 print("\n" + active_character.character_name)
-#print("\n" + "Spells:" + "\n" + str(active_character.char_spells))
 print("\n" + "Slots:" + "\n" + str(active_character.spell_slots))
-print("\n" + "Caster Level: " + str(active_character.caster_level))
+print("\n" + "Caster Level: " + str(active_character.caster_level) + "\n")
 
 #print spells in a column. To print with spell levels as a tuple, print line should just be print(item).
 #for item in active_character.char_spells:
 #  print(item[1])
 #print("\n")
 
-#attemp2
-#if int(active_character.char_spells[0][0]) <= int(input("What level of spell would you like #to prepare?\n")):
-#  for item in active_character.char_spells:
-#    print(item)
-
-
-#attempt3
-#available_spells = (int(active_character.char_spells[0][0]) <= int(input("What level of #spell would you like to prepare?\n")))
-#print(available_spells)
-
 available_spells = int(input("What level spell would you like to prepare?\n"))
+
+available_spell_list = []
+
+print("\nAvailable Spells:\n")
+
+#prints available_spells and appends them to available_spell_list, minus the spell level numbers.
 for a, b in active_character.char_spells:
   if a<= available_spells:
-    print(a, b)
+    available_spell_list.append(b)
+
+#Prints the list of available spells, numbered.
+for number, item in enumerate(available_spell_list, start = 1):
+  print(number, item)
