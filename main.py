@@ -106,14 +106,39 @@ class Character:
     if level <= caster_level
     ]
     self.spell_slots = spell_slots_per_level[character_class]['char_lvl_'+str(character_level)]
+
+    #char_spells as dict instead of list
+    #self.char_spells = { 
+    #level: this_level_spells_l
+    #for level, this_level_spells_l in spells[character_class].items()
+    #if level <= caster_level
+    #}
   
 #instantiate the Character class.
-active_character = Character(name, character_profession, level_ask, caster_level, spells, spell_slots_per_level,)
+active_character = Character(name, character_profession, level_ask, caster_level, spells, spell_slots_per_level)
 
 #prints to test that class is working
 print("\n" + active_character.character_name)
 #print("\n" + "Spells:" + "\n" + str(active_character.char_spells))
 print("\n" + "Slots:" + "\n" + str(active_character.spell_slots))
 print("\n" + "Caster Level: " + str(active_character.caster_level))
-for item in active_character.char_spells:
-  print(item)
+
+#print spells in a column. To print with spell levels as a tuple, print line should just be print(item).
+#for item in active_character.char_spells:
+#  print(item[1])
+#print("\n")
+
+#attemp2
+#if int(active_character.char_spells[0][0]) <= int(input("What level of spell would you like #to prepare?\n")):
+#  for item in active_character.char_spells:
+#    print(item)
+
+
+#attempt3
+#available_spells = (int(active_character.char_spells[0][0]) <= int(input("What level of #spell would you like to prepare?\n")))
+#print(available_spells)
+
+available_spells = int(input("What level spell would you like to prepare?\n"))
+for a, b in active_character.char_spells:
+  if a<= available_spells:
+    print(a, b)
