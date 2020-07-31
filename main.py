@@ -112,16 +112,16 @@ class Character:
 active_character = Character(name, character_profession, level_ask, caster_level, spells, spell_slots_per_level)
 
 #prints to test that class is working
-print("\n" + active_character.character_name)
-print("\n" + "Slots:" + "\n" + str(active_character.spell_slots))
-print("\n" + "Caster Level: " + str(active_character.caster_level) + "\n")
+#print("\n" + active_character.character_name)
+#print("\n" + "Slots:" + "\n" + str(active_character.spell_slots))
+#print("\n" + "Caster Level: " + str(active_character.caster_level) + "\n")
 
 #print spells in a column. To print with spell levels as a tuple, print line should just be print(item).
 #for item in active_character.char_spells:
 #  print(item[1])
 #print("\n")
 
-available_spells = int(input("What level spell would you like to prepare?\n"))
+available_spells = int(input("\nWhat level spell would you like to prepare?\n"))
 
 available_spell_list = []
 
