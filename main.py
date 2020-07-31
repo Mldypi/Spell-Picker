@@ -1,8 +1,10 @@
 import numpy as np
 
 #List of spells. Innermost brackets is a List of spells as a dict object. The inside dict objects are the spell levels, which are themselves dict ovjects to the outermost dict keys, which are DnD Character Classes.
-spells = { 'Cleric': { 
-  1: ['Create Water', 'Cure Minor Wounds', 'Detect Magic', 'Detect Poison', 'Guidance', 'Inflict Minor Wounds', 'Light', 'Mending', 'Purify Food and Drink', 'Read Magic', 'Resistance', 'Virtue'],
+spells = { 'Cleric': {
+  0: ['Create Water', 'Cure Minor Wounds', 'Detect Magic', 'Detect Poison', 'Guidance', 'Inflict Minor Wounds', 'Light', 'Mending', 'Purify Food and Drink', 'Read Magic', 'Resistance', 'Virtue'],
+
+  1: ['Bane', 'Bless', 'Bless Water', 'Cause Fear', 'Command', 'Comprehend Languages', 'Cure Light Wounds', 'Curse Water', 'Deathwatch', 'Detect Alignment', 'Detect Undead', 'Divine Favor', 'Doom', 'Endure Elements', 'Entropic Shield', 'Hide from Undead', 'Inflict Light Wounds', 'Magic Stone', 'Magic Weapon', 'Obscuring Mist', 'Protection from Alignment', 'Remove Fear', 'Sanctuary', 'Shield of Faith', 'Summon Monster 1'],
 
   2: ['Aid', 'Align Weapon', 'Augury', 'Bears Endurance', 'Bulls Strength', 'Calm Emotions', 'Consecrate', 'Cure Moderate Wounds', 'Darkness', 'Death Knell', 'Delay Poison', 'Desecrate', 'Eagles Splendor', 'Enthrall', 'Find Traps', 'Gentle Repose', 'Hold Person', 'Inflict Moderate Wounds', 'Make Whole', 'Owls Wisdom', 'Remove Paralysis', 'Resist Energy', 'Restoration, Lesser', 'Shatter', 'Shield Other', 'Silence', 'Sound Burst', 'Spiritual Weapon', 'Status', 'Summon Monster 2', 'Undetectable Alignment', 'Zone of Truth'],
 
@@ -105,10 +107,13 @@ class Character:
     ]
     self.spell_slots = spell_slots_per_level[character_class]['char_lvl_'+str(character_level)]
   
-#instantiate the Character class. Doesn't have to be a healer, that's a placeholder name for now
-healer = Character(name, character_profession, level_ask, caster_level, spells, spell_slots_per_level,)
+#instantiate the Character class.
+active_character = Character(name, character_profession, level_ask, caster_level, spells, spell_slots_per_level,)
 
-print("\n" + healer.character_name)
-print("\n" + "Spells:" + "\n" + str(healer.char_spells))
-print("\n" + "Slots:" + "\n" + str(healer.spell_slots))
-print("\n" + "Caster Level: " + str(healer.caster_level))
+#prints to test that class is working
+print("\n" + active_character.character_name)
+#print("\n" + "Spells:" + "\n" + str(active_character.char_spells))
+print("\n" + "Slots:" + "\n" + str(active_character.spell_slots))
+print("\n" + "Caster Level: " + str(active_character.caster_level))
+for item in active_character.char_spells:
+  print(item)
