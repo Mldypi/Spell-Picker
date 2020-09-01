@@ -59,7 +59,6 @@ spell_slots_per_level = { 'Cleric': {
    'char_lvl_20': {'slot_lvl_0': 6, 'slot_lvl_1': 5, 'slot_lvl_2': 5, 'slot_lvl_3': 5, 'slot_lvl_4': 5, 'slot_lvl_5': 5, 'slot_lvl_6': 4, 'slot_lvl_7': 4, 'slot_lvl_8': 4, 'slot_lvl_9': 4}
   }
 
-
 }
 
 #Have to leave these as strings. Can I pull these without the '' in the console?
@@ -135,3 +134,8 @@ for a, b in active_character.char_spells:
 #Prints the list of available spells, numbered.
 for number, item in enumerate(available_spell_list, start = 1):
   print(number, item)
+
+print("\nType in the numbers of the spells you wish to prepare, separated by commas.\n")
+
+#prints the available spell slots for the spell level selected in available_spells.
+print("Spell slots available:", spell_slots_per_level[active_character.character_class]['char_lvl_'+active_character.character_level]['slot_lvl_'+str(available_spells)])
